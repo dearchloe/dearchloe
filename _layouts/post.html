@@ -1,0 +1,65 @@
+---
+layout: base
+---
+
+<head>
+  <title>{{ page.title | escape }}</title>
+</head>
+
+<div class="container">
+
+{%- if page.thumbnail -%}
+
+<a class="article-thumb">
+  <img class="article-thumb" style='height: 400px; width: 100%; object-fit: cover;' src="{{ page.thumbnail }}">
+</a>
+
+{%- endif -%}
+
+<div class="container">
+  {%- if page.thumbnail -%}
+  <div style="height: 40px;"></div>
+  {%- else -%}
+  <div style="height: 20vh;"></div>
+  {%- endif -%}
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div style="margin: 0px 16px;">
+          <h3>
+            <span class="post-title-sm">
+              {{ page.title | escape }}
+            </span>
+          </h3>
+        </div>
+
+        <p class="post-time">
+            {%- assign date_format = site.minima.date_format | default: "%-d %b %Y" -%}
+            {{ page.date | date: date_format }} - 
+            <span class="post-cate">
+                {%- for cat in page.categories -%}
+                    {{cat}}<span style="display:inline-block; width: 4px;"></span>
+                {%- endfor -%}
+            </span>
+        </p>
+        <div style="height: 10px;"></div>
+
+        <div class="post-content">
+          {{ content }}
+        </div>
+        
+        {%- include tagsshow.html -%}
+
+        <div style="width: 100%; height: 1px; background-color: rgb(233, 233, 233); margin-top: 48px;"></div>
+
+        {%- include whatnext.html -%}
+
+    </div>
+
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+<div style="height: 40px;"></div>
+
+</div>

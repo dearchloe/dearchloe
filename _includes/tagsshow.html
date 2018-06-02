@@ -1,0 +1,9 @@
+{%- if page.tags -%}
+{%- if page.tags.size > 0 -%}
+<div class="page-tag-container">
+    {%- for tag in page.tags -%}
+        <a href="#">{{tag}}</a>
+    {%- endfor -%}
+</div>
+{%- endif -%}
+{%- endif -%}

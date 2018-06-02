@@ -1,0 +1,50 @@
+<div class="row" style="margin: 0px; margin-top: 64px;">
+    {%- if page.next -%}
+    <div class="col-sm">
+        <div class="page-whatnext-box">
+            {%- if page.next.thumbnail -%}
+            <a href="{{ page.next.url | relative_url }}">
+                <div class="page-whatnext-thumbnail" style="background-image: url('{{ page.next.thumbnail }}')"></div>
+            </a>
+            {%- endif -%}
+            <p class="page-whatnext-text">
+                What's next
+            </p>
+            <a href="{{ page.next.url | relative_url }}">
+                <div style="margin: 0px 16px;">
+                    <h5 class="post-title-xs">
+                        {{ page.next.title }}
+                    </h5>
+                </div>
+            </a>
+            <div class="post-content-xs" style="margin-bottom: 16px;">
+                {{ page.next.excerpt | remove: '<p>' | remove: '</p>' }}
+            </div>
+        </div>
+    </div>
+    {%- endif -%}
+    {%- if page.previous -%}
+    <div class="col-sm">
+        <div class="page-whatnext-box">
+            {%- if page.previous.thumbnail -%}
+            <a href="{{ page.previous.url | relative_url }}">
+                <div class="page-whatnext-thumbnail" style="background-image: url('{{ page.previous.thumbnail }}')"></div>
+            </a>
+            {%- endif -%}
+            <p class="page-whatnext-text">
+                More from previous posts
+            </p>
+            <a href="{{ page.previous.url | relative_url }}">
+                <div style="margin: 0px 16px;">
+                    <h5 class="post-title-xs">
+                        {{ page.previous.title }}
+                    </h5>
+                </div>
+            </a>
+            <div class="post-content-xs" style="margin-bottom: 16px;">
+                {{ page.previous.excerpt | remove: '<p>' | remove: '</p>' }}
+            </div>
+        </div>
+    </div>
+    {%- endif -%}
+</div>

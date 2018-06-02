@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}" style="margin: 0px; padding: 0px;">
+
+    {%- include head.html -%}
+
+    <div class="row" style="margin: 60px 0px;">
+        <div class="col-sm">
+            <center>
+                <h2 class="head-text"><a href="/" style="text-decoration: none; color: black;">Dear friends,</a></h2>
+                <p style="font-size: 0.7em;">If I’m ever lonely, you’ll be there for me, right?</p>
+            </center>
+        </div>
+    </div>
+
+    <div style="width: 64px; height: 64px; position: absolute; top: 70px; left: 40px;">
+        <a href="/contact">
+            <img class="btn btn-link" style="width: 100%; height: auto;" src='{{ "/assets/about_icon.png" | relative_url }}'>
+        </a>
+    </div>
+
+    <body>
+        {{ content }}
+    </body>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+<br>
+<br>
+
+</html>

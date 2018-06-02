@@ -1,0 +1,144 @@
+---
+layout: base
+---
+
+<head>
+  <title>{{ site.title | escape }}</title>
+</head>
+
+<div class="container">
+
+{%- assign date_format = site.minima.date_format | default: "%-d %b %Y" -%}
+
+<div class="row">
+
+  {%- if paginator.posts.size > 0 -%}
+  <div class="col-sm">
+
+    {%- assign newestpost = site.posts[0] -%}
+
+      {%- if newestpost.thumbnail -%}
+      <a class="article-thumb" href="{{ newestpost.url | relative_url }}">
+        <img class="article-thumb" style='height: 400px; width: 100%; object-fit: cover;' src="{{ newestpost.thumbnail }}">
+      </a>
+      {%- endif -%}
+
+      <div class="media media-thumb">
+        <div class="row" style="margin: 30px 0px;">
+          <div class="col-sm text-right">
+            <div class="post-time">
+                {{ newestpost.date | date: date_format }} - 
+                <span class="post-cate">
+                    {%- for cat in newestpost.categories -%}
+                        {{cat}}<span style="display:inline-block; width: 4px;"></span>
+                    {%- endfor -%}
+                </span>
+            </div>
+            <div style="margin: 0px 16px;">
+              <a class="post-title" href="{{ newestpost.url | relative_url }}">
+                {{ newestpost.title | escape }}
+              </a>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div>
+              <div class="post-content" style="margin: 0px; font-size: 0.85em;">
+                {%- if site.show_excerpts -%}
+                  {{ newestpost.excerpt | remove: '<p>' | remove: '</p>' }}
+                {%- endif -%}
+              </div>
+              <!-- <a class="post-readmore" href="{{ post.url | relative_url }}">
+                READ
+              </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  {%- endif -%}
+</div>  
+
+<div class="row" style="margin: 40px 0px;">
+  <div class="col-sm">
+      <center>
+        <span style="font-size: 0.75em; text-transform: uppercase; font-weight: 700; color: gray">recent posts</span>
+      </center>
+  </div>
+</div>
+
+<div class="row">
+  
+  {% for condition in (0..2) %}
+
+    <div class="col-sm" style="padding: 0px; margin: 0px 2px;">
+
+    {%- for post in paginator.posts -%}
+
+      {%- assign ii = forloop.index0 | modulo: 3 -%}
+
+      {%- if ii == condition -%}
+
+      <div>
+
+        {%- if post.thumbnail -%}
+          <a class="article-thumb" href="{{ post.url | relative_url }}">
+            <img class="article-thumb" src="{{ post.thumbnail }}">
+          </a>
+        {%- endif -%}
+
+        <div class="article-wrapper" style="font-size: 0.8em;">
+          <div class="post-time">
+              {{ post.date | date: date_format }} - 
+              <span class="post-cate">
+                  {%- for cat in post.categories -%}
+                      {{cat}}<span style="display:inline-block; width: 4px;"></span>
+                  {%- endfor -%}
+              </span>
+          </div>
+          <div style="margin: 0px 16px;">
+            <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          </div>
+
+          <div class="media-body body-thumb">
+            <div class="post-content">
+              {%- if site.show_excerpts -%}
+                {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+              {%- endif -%}
+            </div>
+            <!-- <a class="post-readmore" href="{{ post.url | relative_url }}">
+              READ
+            </a> -->
+          </div>
+
+        </div>
+      </div>
+      {%- endif -%}
+    {%- endfor -%}
+    </div>
+  {%- endfor -%}
+
+  <!-- Pagination links -->
+  <div style="width: 100%;">
+    <table style="width: 100%;">
+      <tr style="width: 100%;">
+        <td class="text-left" style="width: 33%;">
+            {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path }}" style="font-size: 0.5em; font-weight: 700; text-transform: uppercase;" class="btn btn-primary">Previous</a>
+            {% endif %}
+        </td>
+        <td class="text-center" style="width: 33%;">
+          <span class="page-number" style="font-size: 0.5em; font-weight: 700; text-transform: uppercase;">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        </td>
+        <td class="text-right" style="width: 33%;">
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" style="font-size: 0.5em; font-weight: 700; text-transform: uppercase;" class="btn btn-primary">Next</a>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+      
+    </div>
+
+</div>
+
+
