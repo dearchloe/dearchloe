@@ -10,10 +10,10 @@ layout: base
 
 {%- assign date_format = site.minima.date_format | default: "%-d %b %Y" -%}
 
-<div class="row">
+<div class="row" style="margin: 0px;">
 
   {%- if paginator.posts.size > 0 -%}
-  <div class="col-sm">
+  <div class="col-sm" style="margin: 0px; padding: 0px;">
 
     {%- assign newestpost = site.posts[0] -%}
 
@@ -66,7 +66,7 @@ layout: base
   </div>
 </div>
 
-<div class="row">
+<div class="row" style="margin: 0px;">
   
   {% for condition in (0..2) %}
 
